@@ -19,12 +19,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-        <meta property="og:image" content="https://moviebox.vercel.app/android-chrome-512x512.png" />
+        <meta property="og:image" content="https://jemeni11-moviebox.vercel.app/android-chrome-512x512.png" />
         <meta property="og:type" content="website" />
         <meta property="og:description" content="Discover, explore, and save your favorite movies with MovieBox." />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:domain" content="vercel.app" />
-        <meta name="twitter:image" content="https://moviebox.vercel.app/android-chrome-512x512.png" />
+        <meta name="twitter:image" content="https://jemeni11-moviebox.vercel.app/android-chrome-512x512.png" />
         <meta name="twitter:description" content="Discover, explore, and save your favorite movies with MovieBox." />
         <meta name="twitter:creator" content="@Jemeni11" />
       </Head>
