@@ -1,4 +1,4 @@
-import type { ImageResponse, TopRated, Genres } from "@/types";
+import type { ImageResponse, TopRated, Genres, MovieExpanded } from "@/types";
 
 const options = {
   method: "GET",
@@ -44,6 +44,20 @@ export async function getMoviesGenre() {
   try {
     const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options);
     const data: Genres = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}
+
+export async function getMovieData(movie_id: number) {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie_id}?append_to_response=videos%2Ccredits&language=en-US`,
+      options,
+    );
+    const data: MovieExpanded = await response.json();
     return data;
   } catch (error) {
     console.error(error);

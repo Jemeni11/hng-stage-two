@@ -4,7 +4,7 @@ import { DM_Sans } from "next/font/google";
 import Head from "next/head";
 import { ConfigContextProvider } from "@/store/context";
 
-const DM_Sans_Font = DM_Sans({ subsets: ["latin"] });
+export const DM_Sans_Font = DM_Sans({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

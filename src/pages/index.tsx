@@ -49,7 +49,7 @@ function Body({ topRatedMovies, genres }: { topRatedMovies: TopRated["results"] 
           {topRatedMoviesSliced.map((movie) => (
             <MovieCard
               key={movie.id}
-              {...movie}
+              id={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
               genre_ids={movie.genre_ids}
