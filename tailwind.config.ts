@@ -11,17 +11,6 @@ const config: Config = {
         "threemoviesstack": "url('/threemoviesstack.png')",
         "circlebg": "url('/circlebg.svg')",
       },
-      // keyframes: {
-      //   fade: {
-      //     "0%": { opacity: "0" },
-      //     "20%": { opacity: "1" },
-      //     "80%": { opacity: "1" },
-      //     "100%": { opacity: "0" },
-      //   },
-      // },
-      // animation: {
-      //   fade: "fade 10s ease-in-out infinite",
-      // },
     },
   },
   plugins: [],

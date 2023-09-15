@@ -12,8 +12,8 @@ import Youtube from "../../public/Icons/Youtube.svg";
 type HomeProps = {
   data: {
     authdata: isAuthenticated;
-    top_rated: TopRated | undefined;
-    genres: Genres | undefined;
+    top_rated: TopRated | null;
+    genres: Genres | null;
   };
 };
 
@@ -36,15 +36,15 @@ function Body({ topRatedMovies, genres }: { topRatedMovies: TopRated["results"] 
 
   return (
     <div className="w-full px-[5%] pt-[4.38rem] md:px-[6.25rem]">
-      <div className="min-h-screen w-full">
-        <section className="mb-11 flex items-center justify-between">
+      <div className="min-h-max w-full">
+        <section className="mb-11 flex items-center justify-between gap-x-3">
           <h2 className="text-4xl font-bold text-black">Featured Movie</h2>
           <button type="button" className="flex items-center gap-2">
             <span className="text-lg leading-6 text-rose-700">See more</span>
             <Image src={RightArrow} alt="see more" />
           </button>
         </section>
-        <div className="mb-12 grid min-h-screen w-full grid-cols-1 gap-x-20 gap-y-[6.44rem] sm:grid-cols-2 md:mb-[9.19rem] md:grid-cols-3 lg:grid-cols-4">
+        <div className="mb-12 grid min-h-max w-full grid-cols-1 gap-x-20 gap-y-[6.44rem] sm:grid-cols-2 md:mb-[9.19rem] md:grid-cols-3 lg:grid-cols-4">
           {!topRatedMovies && <div>No top rated movies...</div>}
           {topRatedMoviesSliced.map((movie) => (
             <MovieCard
@@ -67,47 +67,27 @@ function Body({ topRatedMovies, genres }: { topRatedMovies: TopRated["results"] 
 
 function Footer() {
   return (
-    <footer className="mb-8 flex w-full flex-col items-center justify-center gap-y-[2.12rem] md:mb-[4.6rem]">
+    <footer className="mb-8 flex w-full flex-col items-center justify-center gap-y-[2.12rem] text-center md:mb-[4.6rem]">
       <div className="flex gap-x-12">
         <Image src={Facebook} alt="FaceBook" />
         <Image src={Instagram} alt="Instagram" />
         <Image src={Twitter} alt="Twitter" />
         <Image src={Youtube} alt="Youtube" />
       </div>
-      <div className="flex gap-x-12">
-        <span className="text-lg font-bold leading-[normal] text-gray-900">Conditions of Use</span>
-        <span className="text-lg font-bold leading-[normal] text-gray-900">Privacy & Policy</span>
-        <span className="text-lg font-bold leading-[normal] text-gray-900">Press Room</span>
+      <div className="mx-[5%] flex gap-x-4 text-base font-bold leading-[normal] text-gray-900 md:mx-0 md:gap-x-12 md:text-lg">
+        <span>Conditions of Use</span>
+        <span>Privacy & Policy</span>
+        <span>Press Room</span>
       </div>
-      <span className="text-lg font-bold leading-[normal] text-gray-500">© 2021 MovieBox by Adriana Eka Prayudha</span>
+      <span className="mx-[5%] text-base font-bold leading-[normal] text-gray-500 md:mx-0 md:text-lg">
+        © 2021 MovieBox by Adriana Eka Prayudha
+      </span>
     </footer>
   );
 }
 
 export async function getServerSideProps() {
-  // movie name           -> title
-  // imdb rating          -> vote average
-  // rotten tomato rating -> popularity
-  // description          -> overview
-  // video trailer        -> get manually
-  // background           -> backdrop_path
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env["AUTH_TOKEN"]}`,
-    },
-  };
   let data = {};
-
-  try {
-    const res = await fetch("https://api.themoviedb.org/3/authentication", options);
-    const authdata: isAuthenticated = await res.json();
-    data = { ...data, authdata: authdata };
-    console.log("getServerSideProps", data);
-  } catch (error) {
-    console.error("getServerSideProps", error);
-  }
 
   const topRatedMovies = await getTopRatedMovies();
   data = { ...data, top_rated: topRatedMovies };
@@ -115,6 +95,5 @@ export async function getServerSideProps() {
   const movieGenres = await getMoviesGenre();
   data = { ...data, genres: movieGenres };
 
-  // Pass data to the page via props
   return { props: { data } };
 }

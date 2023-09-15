@@ -23,15 +23,6 @@ import { getMovieData } from "@/utils";
 const Poppins_Font = Poppins({ weight: ["400", "700"], subsets: ["latin"] });
 
 export default function Movies({ data }: { data: { movieData: MovieExpanded } }) {
-  // movie name
-  // year
-  // rating
-  // time
-  // genre
-  // description
-  // director
-  // writer
-  // stars
   const router = useRouter();
   const slug = router.query.slug;
 
@@ -244,6 +235,7 @@ export async function getServerSideProps({ params }: { params: { slug: string } 
   const movie_id = +params.slug;
 
   const movieData = await getMovieData(movie_id);
+
   let data = { movieData: movieData };
 
   return { props: { data } };

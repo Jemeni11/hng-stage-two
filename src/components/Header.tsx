@@ -8,8 +8,6 @@ import Menu from "../../public/Icons/Menu.svg";
 import IMDb from "../../public/Icons/imdb.svg";
 import Tomato from "../../public/Icons/tomato.svg";
 import Play from "../../public/Icons/Play.svg";
-// qg6kyqu56Qfriu2EodegFq3CqIq.jpg
-// 458156
 
 export default function Header() {
   const config = useContext(ConfigContext);
@@ -39,31 +37,45 @@ export default function Header() {
   );
 }
 
-const Navbar = () => (
-  <div className="mx-auto min-h-[5rem] max-w-screen-xl bg-transparent px-4 py-[0.94rem] sm:px-6 lg:px-8 min-[1440px]:px-[6.035rem]">
-    <div className="flex items-center justify-between">
-      <div className="md:flex md:items-center md:gap-12">
-        <Link className="flex items-center gap-6" href="/">
-          <Image src={Logo} alt="Home" />
-          <span className="text-2xl font-bold leading-6 text-white">MovieBox</span>
-        </Link>
-      </div>
+const Navbar = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const handleSearch = () => {
+    if (searchInput.trim() === "") return;
+    alert(searchInput);
+  };
+  return (
+    <div className="mx-auto min-h-[5rem] max-w-screen-xl bg-transparent px-4 py-[0.94rem] sm:px-6 lg:px-8 min-[1440px]:px-[6.035rem]">
+      <div className="flex items-center justify-between">
+        <div className="md:flex md:items-center md:gap-12">
+          <Link className="flex items-center gap-6" href="/">
+            <Image src={Logo} alt="Home" />
+            <span className="text-2xl font-bold leading-6 text-white">MovieBox</span>
+          </Link>
+        </div>
 
-      <div className="hidden md:block">
-        <div className="inline-flex h-9 w-[525px] items-center justify-between gap-2.5 rounded-md border border-gray-300 px-2.5 py-1.5">
-          <div className="text-base font-normal leading-normal text-white">What do you want to watch?</div>
-          {/* <div className="relative h-4 w-4"></div> */}
-          <Image src={Search} alt="Search" />
+        <div className="hidden lg:block">
+          <div className="inline-flex h-9 w-[525px] items-center justify-between gap-2.5 rounded-md border border-gray-300 px-2.5 py-1.5">
+            <input
+              className="w-full border-none bg-transparent text-base font-normal leading-normal text-white outline-none placeholder:text-white"
+              type="text"
+              name="movie_search_input"
+              id="movie_search_input"
+              placeholder="What do you want to watch?"
+              value={searchInput} // I can't remember if it's supposed to be value or defaultValue I connect to state
+              onChange={(event) => setSearchInput(event.target.value)}
+            />
+            <Image src={Search} alt="Search" className="hover:cursor-pointer" onClick={handleSearch} />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-[1.59rem]">
+          <span className="hidden text-sm font-bold leading-6 text-white sm:block md:text-base">Sign In</span>
+          <Image src={Menu} alt="Menu" className="hover:cursor-pointer" />
         </div>
       </div>
-
-      <div className="flex items-center gap-[1.59rem]">
-        <span className="text-base font-bold leading-6 text-white">Sign In</span>
-        <Image src={Menu} alt="Menu" />
-      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const MovieDetails = () => {
   return (

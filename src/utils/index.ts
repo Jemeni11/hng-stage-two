@@ -23,7 +23,7 @@ export async function getImages(movie_id: number) {
     return data;
   } catch (error) {
     console.error(error);
-    return undefined;
+    return null;
   }
 }
 
@@ -36,7 +36,7 @@ export async function getTopRatedMovies() {
     return data;
   } catch (error) {
     console.error(error);
-    return undefined;
+    return null;
   }
 }
 
@@ -47,7 +47,7 @@ export async function getMoviesGenre() {
     return data;
   } catch (error) {
     console.error(error);
-    return undefined;
+    return null;
   }
 }
 
@@ -61,6 +61,6 @@ export async function getMovieData(movie_id: number) {
     return data;
   } catch (error) {
     console.error(error);
-    return undefined;
+    return null;
   }
 }
