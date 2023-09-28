@@ -1,38 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# STAGE 2 TASK
 
-## Getting Started
+Objective
 
-First, run the development server:
+Create a movie discovery web application that allows users to search for movies, view details about them, and save their favorite movies. You’ll be consuming data from the TMDB API.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Requirements
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. User Interface:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Create a responsive and visually appealing user interface for the application. Here's the link to the design you're expected to replicate: https://www.figma.com/file/tVfgoNfhYkQaUkh8LGqRab/MovieBox-(Community)?type=design&node-id=1220-324&mode=design&t=6998DWtjQrxz8mOf-0
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+You should list the top 10 movies on the homepage.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+They should be displayed in a grid layout with their movie posters.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The Card component should display the movie title and release date.
 
-## Learn More
+    card - [data-testid: movie-card]
+    movie poster - [data-testid: movie-poster]
+    movie title - [data-testid: movie-title]
+    movie release date - [data-testid: movie-release-date]
 
-To learn more about Next.js, take a look at the following resources:
+2. Movie Search:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Implement a search feature that allows users to search for movies by title.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Display search results, including movie posters, titles, and release dates.
 
-## Deploy on Vercel
+Show a loading indicator while fetching search results.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Movie Details:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+When i go to to /movies/:id route (where :id is the imdb_id), I should see the movie details page.
+
+I should see
+title - [data-testid: movie-title]
+release date (in UTC) - [data-testid: movie-release-date]
+runtime (in minutes) - [data-testid: movie-runtime]
+overview - [data-testid: movie-overview]
+
+API Integration:
+
+Consume the TMDB API to fetch movie data.
+
+Use the following API endpoints:
+
+Fetch movie details by ID: https://api.themoviedb.org/3/movie/{movie_id}
+
+Error Handling:
+
+Implement error handling to display meaningful error messages to users in case of API failures or other issues.
+
+Submission:
+
+Host your frontend application on a platform of your choice (e.g., GitHub Pages, Netlify).
+
+Provide clear instructions on how to run your project locally in your README.md file.
+
+Ensure that the code is well-documented and organized.
+
+This frontend challenge requires you to build a dynamic movie discovery app that interacts with a real API to fetch and display movie data.
+
+PS: You MUST use react or Next js
+
+Submit your task through the designated submission form.
+
+Submission Deadline:
+
+The deadline for submissions is 14th September 2023, 11:59 PM GMT. Late submissions will not be entertained.
+
+Link to submission form: LINK
+
+PPS: THE API MIGHT NOT RETURN ALL THE INFO ON THE SECOND PAGE OF THE DESIGN, ADD THE ESSENTIAL ONES THAT ARE LISTEN ABOVE. THE SIDEBAR DOESN'T NEED TO BE FUNCTIONAL.
+
+YOU MAY USE ANY CSS FRAMEWORK/LIBRARY OF YOUR CHOICE 
